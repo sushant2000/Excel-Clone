@@ -108,6 +108,7 @@ body{
     width : 30px;
     height : calc(75vh - 30px);
     border: 1px solid lightgray;
+    overflow: hidden;
 }
 
 .input-cell-container{
@@ -160,7 +161,7 @@ body{
     cursor: default;
 }
 .column-name{
-    width: 100px;
+    min-width:  100px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -174,13 +175,15 @@ body{
     justify-content: center;
     font-weight: "bold";
     border-bottom: 1px solid lightgray;
-    height: 25px;
+    min-height: 25px;
 }
 .cell-row{
     display: flex;
 }
+
 .input-cell{
     width: 100px;
     height: 25px;
-    bor
+    border-right: 1px solid  lightgray;
+    border-bottom: 1px solid lightgray;
 }
