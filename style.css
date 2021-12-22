@@ -19,7 +19,7 @@ body{
 }
 .cellprop-action-cont{
     height: 3rem;
-    background-color: lightsalmon;
+    background-color: #ecf0f1;
     display: flex;
     align-items: center;
     padding-left: 1rem;
@@ -40,9 +40,30 @@ body{
     padding: 0.2rem;
 }
 .formula-action-cont{
-    height: 3rem;
-    background-color: lightblue;
+    height: 2rem;
+    background-color: #ecf0f1;
     padding-left: 1rem;
+    display: flex;
+    align-items: center;
+    
+}
+.formula-action-cont > *{
+    display: inline-block;
+    margin-right: 0.7rem;
+}
+.formula-icon{
+width: 1.2rem;
+}
+.address-bar{
+    width: 5rem;
+}
+.formula-bar{
+    width: calc(100vw - 5rem - 0.7rem - 0.7rem - 0.7rem);
+}
+.formula-action-cont > input{
+    border: none;
+    outline: none;
+    height: 70%;
 }
 
 .sheet-action-cont{
@@ -74,5 +95,5 @@ body{
     font-size: 0.9rem;
 }
 .grid-cont{
-    height : calc(100vh - 3rem - 3rem - 3rem - 3rem);
+    height : calc(100vh - 3rem - 2rem - 3rem - 3rem);
 }
