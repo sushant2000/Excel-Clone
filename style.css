@@ -1,0 +1,50 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    padding: 0;
+}
+.page-action-cont{
+    height: 3rem;
+    background-color: #107c41;
+    display: flex;
+    align-items: flex-end;
+}
+.page-action{
+    margin: 0.5rem;
+    color: #f1f2f6;
+
+}
+.cellprop-action-cont{
+    height: 3rem;
+    background-color: lightsalmon;
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+}
+.cellprop-action-cont > *{
+    display: inline-block;
+    margin-right: 1rem;
+}
+.cellprop-action-cont > select {
+    border: none;
+    border-radius: 2px;
+}
+.font-family-prop{
+    padding: 0.2rem;
+}
+.font-size-prop{
+    padding: 0.2rem;
+}
+.formula-action-cont{
+    height: 3rem;
+    background-color: lightblue;
+}
+.sheet-action-cont{
+    height: 3rem;
+    background-color: lightcoral;
+}
+.grid-cont{
+    height : calc(100vh - 3rem - 3rem - 3rem - 3rem);
+}

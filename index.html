@@ -1,16 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel= "stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
     <title>Excel Clone</title>
-</head>
-<body>
-    
-
+  </head>
+  <body>
+    <div class="page-action-cont">
+      <div class="page-action">Home</div>
+      <div class="page-action">File</div>
+      <div class="page-action">Insert</div>
+      <div class="page-action">Layout</div>
+      <div class="page-action">Help</div>
+    </div>
+    <div class="cellprop-action-cont">
+      <span class="material-icons"> content_copy </span>
+      <span class="material-icons"> content_cut </span>
+      <span class="material-icons"> content_paste </span>
+      <select class = "selector font-family-prop">
+        <option style="font-family:Noto Sans" value="Noto Sans">Noto Sans</option>
+        <option style="font-family:Arial" value="Arial">Arial</option>
+        <option style="font-family:Calibri" value="Calibri">Calibri</option>
+        <option style="font-family:Comic Sans MS" value="Comic Sans MS">Comic Sans MS</option>
+        <option style="font-family:Courier New" value="Courier New">Courier New</option>
+        <option style="font-family:Impact" value="Impact">Impact</option>
+        <option style="font-family:Georgia" value="Georgia">Georgia</option>
+        <option style="font-family:Garamond" value="Garamond">Garamond</option>
+        <option style="font-family:Lato" value="Lato">Lato</option>
+        <option style="font-family:Open Sans" value="Open Sans">Open Sans</option>
+        <option style="font-family:Palatino" value="Palatino">Palatino</option>
+        <option style="font-family:Verdana" value="Verdana">Verdana</option>
+    </select>
+    <select class="selector font-size-prop" id="font-size">
+        <option value="10">10</option>
+        <option value="12">12</option>
+        <option value="14" selected>14</option>
+        <option value="16">16</option>
+        <option value="18">18</option>
+        <option value="20">20</option>
+        <option value="22">22</option>
+        <option value="24">24</option>
+        <option value="26">26</option>
+        <option value="28">28</option>
+        <option value="30">30</option>
+        <option value="32">32</option>
+    </select>
+      <span class="material-icons"> format_bold </span>
+      <span class="material-icons"> format_italic </span>
+      <span class="material-icons"> format_underlined </span>
+      <span class="material-icons"> format_align_left </span>
+      <span class="material-icons"> format_align_center </span>
+      <span class="material-icons"> format_align_right </span>
+    </div>
+    <div class="formula-action-cont"></div>
+    <div class="grid-cont"></div>
+    <div class="sheet-action-cont"></div>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
