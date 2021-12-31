@@ -104,31 +104,51 @@ width: 1.2rem;
     height: 2rem;
     width: 2rem;
     background-color: #747d8c;
+    position: fixed;
+    z-index: 6;
 }
 .address-col-cont{
-    height: 10rem;
-    width: 2rem;
+    position: sticky;
+    top: 2rem;
+    left: 0;
 }
 .address-row-cont{
-    height: 2rem;
     display: flex;
+    position: sticky;
+    top: 0;
+    left: 2rem;
     
 }
 .cells-cont{
     position: absolute;
     top: 0;
     left: 2rem;
-    width: 20rem;
-    height: 30rem;
+
 }
 .address-col{
     height: 2rem;
     width: 2rem;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: 1px solid #dfe4ea;
 }
 .address-row{
     height: 2rem;
     width: 5rem;
+    border: 1px solid #dfe4ea;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
+}
+.cell{
+    height: 2rem;
+    width: 5rem;
+    border: 1px solid #dfe4ea;
+    outline: none;
+
+}
+.row-cont{
+    display: flex;
 }
