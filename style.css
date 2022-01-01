@@ -17,18 +17,21 @@ body{
     color: #f1f2f6;
 
 }
-.cellprop-action-cont{
+.cellprop-actions-cont{
     height: 3rem;
     background-color: #ecf0f1;
     display: flex;
     align-items: center;
     padding-left: 1rem;
 }
-.cellprop-action-cont > *{
+.cellprop-actions-cont > *{
     display: inline-block;
     margin-right: 1rem;
 }
-.cellprop-action-cont > select {
+.cellprop-actions-cont > *:hover{
+    cursor: pointer;
+}
+.cellprop-actions-cont > select {
     border: none;
     border-radius: 2px;
     outline: none;

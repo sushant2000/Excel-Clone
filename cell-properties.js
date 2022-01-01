@@ -63,7 +63,7 @@ for(let i = 0; i < rows; i++){
 })
 
 underline.addEventListener("click" , (e) => {
-    let address = addressBar.value;
+   let address = addressBar.value;
    let [cell , cellProp] = activecell(address);
 
    //Modification
@@ -73,6 +73,46 @@ underline.addEventListener("click" , (e) => {
 
 })
 
+//Changing fontsize anf fontfamily
+
+
+fontSize.addEventListener("change" ,  (e) => {
+    let address = addressBar.value;
+    let [cell , cellProp] = activecell(address);
+
+    cellProp.fontSize = fontSize.value; //data change
+    cell.style.fontSize = cellProp.fontSize + "px";
+    fontSize.value = cellProp.fontSize;
+})
+
+fontFamily.addEventListener("change" ,  (e) => {
+    let address = addressBar.value;
+    let [cell , cellProp] = activecell(address);
+
+    cellProp.fontFamily = fontFamily.value; // data change
+    cell.style.fontFamily = cellProp.fontFamily;
+    fontFamily.value = cellProp.fontFamily;
+})
+
+//fontcolor and backround color
+fontColor.addEventListener("change" ,  (e) => {
+    let address = addressBar.value;
+    let [cell , cellProp] = activecell(address);
+
+    cellProp.fontColor = fontColor.value; // data change
+    cell.style.color = cellProp.fontColor;
+    fontColor.value = cellProp.fontColor;
+})
+BGColor.addEventListener("change" ,  (e) => {
+    let address = addressBar.value;
+    let [cell , cellProp] = activecell(address);
+
+    cellProp.BGColor = BGColor.value; // data change
+    cell.style.backgroundColor = cellProp.BGColor;
+    BGColor.value = cellProp.BGColor;
+})
+
+ // Encoding and Decoding cell adress 
  function activecell(address){
      let [rid , cid] = decodeRIDCIDFromAddress(address); // Array Destructing
      //Access cell & storage object
