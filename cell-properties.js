@@ -34,7 +34,9 @@ for(let i = 0; i < rows; i++){
  let rightAlign = alignment[2];
 
 
- let addressBar = document.querySelector(".address-bar");
+ //let addressBar = document.querySelector(".address-bar");
+ let activeColorProp = "#A9A9A9"; 
+ let inactiveColorProp = "#ecf0f1";
 
  //Application of two way binding
  //Attach Property Listeners
@@ -42,7 +44,34 @@ for(let i = 0; i < rows; i++){
      let address = addressBar.value;
     let [cell , cellProp] = activecell(address);
 
+    //Modification
+    cellProp.bold = !cellProp.bold; // Db change
+    cell.style.fontWeight = cellProp.bold ? "bold" : "normal"; // UI Change
+    bold.style.backgroundColor = cellProp.bold ? activeColorProp : inactiveColorProp;
+
  })
+
+ italic.addEventListener("click" , (e) => {
+    let address = addressBar.value;
+   let [cell , cellProp] = activecell(address);
+
+   //Modification
+   cellProp.italic = !cellProp.italic; // Db change
+   cell.style.fontStyle = cellProp.italic ? "italic" : "normal"; // UI Change
+   italic.style.backgroundColor = cellProp.italic ? activeColorProp : inactiveColorProp;
+
+})
+
+underline.addEventListener("click" , (e) => {
+    let address = addressBar.value;
+   let [cell , cellProp] = activecell(address);
+
+   //Modification
+   cellProp.underline = !cellProp.underline; // Db change
+   cell.style.textDecoration = cellProp.underline ? "underline" : "none"; // UI Change
+   underline.style.backgroundColor = cellProp.underline ? activeColorProp : inactiveColorProp;
+
+})
 
  function activecell(address){
      let [rid , cid] = decodeRIDCIDFromAddress(address); // Array Destructing
@@ -55,6 +84,6 @@ for(let i = 0; i < rows; i++){
  function decodeRIDCIDFromAddress(address){
      //address -> "A1"
      let rid = Number(address.slice(1) - 1); //indexing start form 0 
-     let cid = Number(String.charCodeAt(0)) - 65; // for encode in alpha we add 65 noe to decode again we r subtrcting 65
+     let cid = Number(address.charCodeAt(0)) - 65; // for encode in alpha we add 65 noe to decode again we r subtrcting 65
      return [rid , cid];
  }
