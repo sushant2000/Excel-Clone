@@ -121,10 +121,10 @@ alignment.forEach((alignElem) => {
     let [cell, cellProp] = activecell(address);
 
     let alignValue = e.target.classList[0];
-    cellProp.aligment = alignValue;
-    cell.style.textAlign = cellprop.aligment;
+    cellProp.alignment = alignValue;
+    cell.style.textAlign = cellProp.alignment;
 
-    switch (alignValue) {
+    switch(alignValue) {
       case "left":
         leftAlign.style.backgroundColor = activeColorProp;
         centerAlign.style.backgroundColor = inactiveColorProp;
@@ -141,8 +141,8 @@ alignment.forEach((alignElem) => {
         rightAlign.style.backgroundColor = activeColorProp;
         break;
     }
-  });
-});
+  })
+})
 
 // Encoding and Decoding cell adress
 function activecell(address) {
