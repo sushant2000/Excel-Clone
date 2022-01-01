@@ -32,3 +32,29 @@ for(let i = 0; i < rows; i++){
  let leftAlign = alignment[0];
  let centerAlign = alignment[1];
  let rightAlign = alignment[2];
+
+
+ let addressBar = document.querySelector(".address-bar");
+
+ //Application of two way binding
+ //Attach Property Listeners
+ bold.addEventListener("click" , (e) => {
+     let address = addressBar.value;
+     activecell(address);
+
+ })
+
+ function activecell(address){
+     let [rid , cid] = decodeRIDCIDFromAddress(address);
+     //Access cell & storage object
+     let cell = document.querySelector(`.cell[rid="${rid}"][cid="${cid}"]`);
+     let cellProp = sheetDB[rid][cid];
+     return [cell , cellProp];
+ }
+
+ function decodeRIDCIDFromAddress(address){
+     //address -> "A1"
+     let rid = Number(address.slice(1) - 1); //indexing start form 0 
+     let cid = Number(String.charCodeAt(0)) - 65; // for encode in alpha we add 65 noe to decode again we r subtrcting 65
+     return [rid , cid];
+ }

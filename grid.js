@@ -53,3 +53,7 @@ function addListenerForAddressBarDisplay(cell , i , j){
 
 }
 /*Cell Address printing end */
+
+//By default click on first cell via DOM
+let firstcell = document.querySelector(".cell");
+firstcell.click();
