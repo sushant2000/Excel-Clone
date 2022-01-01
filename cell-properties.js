@@ -3,21 +3,21 @@
 let sheetDB = []; // largest array contains all subarray
 
 for (let i = 0; i < rows; i++) {
-  let sheetRow = [];
-  for (let j = 0; j < col; j++) {
-    let cellProp = {
-      bold: false,
-      italic: false,
-      underline: false,
-      aligment: "left",
-      fontFamily: "monospace",
-      fontSize: "15",
-      fontColor: "#000000",
-      BGColor: "#000000",
-    };
-    sheetRow.push(cellProp);
-  }
-  sheetDB.push(sheetRow);
+    let sheetRow = [];
+    for (let j = 0; j < col; j++) {
+        let cellProp = {
+            bold: false,
+            italic: false,
+            underline: false,
+            aligment: "left",
+            fontFamily: "monospace",
+            fontSize: "15",
+            fontColor: "#000000",
+            BGColor: "#000000",
+        };
+        sheetRow.push(cellProp);
+    }
+    sheetDB.push(sheetRow);
 }
 
 // Selectors for cell properties
@@ -40,122 +40,122 @@ let inactiveColorProp = "#ecf0f1";
 //Application of two way binding
 //Attach Property Listeners
 bold.addEventListener("click", (e) => {
-  let address = addressBar.value;
-  let [cell, cellProp] = activecell(address);
+    let address = addressBar.value;
+    let [cell, cellProp] = activecell(address);
 
-  //Modification
-  cellProp.bold = !cellProp.bold; // Db change
-  cell.style.fontWeight = cellProp.bold ? "bold" : "normal"; // UI Change
-  bold.style.backgroundColor = cellProp.bold
-    ? activeColorProp
-    : inactiveColorProp;
+    //Modification
+    cellProp.bold = !cellProp.bold; // Db change
+    cell.style.fontWeight = cellProp.bold ? "bold" : "normal"; // UI Change
+    bold.style.backgroundColor = cellProp.bold
+        ? activeColorProp
+        : inactiveColorProp;
 });
 
 italic.addEventListener("click", (e) => {
-  let address = addressBar.value;
-  let [cell, cellProp] = activecell(address);
+    let address = addressBar.value;
+    let [cell, cellProp] = activecell(address);
 
-  //Modification
-  cellProp.italic = !cellProp.italic; // Db change
-  cell.style.fontStyle = cellProp.italic ? "italic" : "normal"; // UI Change
-  italic.style.backgroundColor = cellProp.italic
-    ? activeColorProp
-    : inactiveColorProp;
+    //Modification
+    cellProp.italic = !cellProp.italic; // Db change
+    cell.style.fontStyle = cellProp.italic ? "italic" : "normal"; // UI Change
+    italic.style.backgroundColor = cellProp.italic
+        ? activeColorProp
+        : inactiveColorProp;
 });
 
 underline.addEventListener("click", (e) => {
-  let address = addressBar.value;
-  let [cell, cellProp] = activecell(address);
+    let address = addressBar.value;
+    let [cell, cellProp] = activecell(address);
 
-  //Modification
-  cellProp.underline = !cellProp.underline; // Db change
-  cell.style.textDecoration = cellProp.underline ? "underline" : "none"; // UI Change
-  underline.style.backgroundColor = cellProp.underline
-    ? activeColorProp
-    : inactiveColorProp;
+    //Modification
+    cellProp.underline = !cellProp.underline; // Db change
+    cell.style.textDecoration = cellProp.underline ? "underline" : "none"; // UI Change
+    underline.style.backgroundColor = cellProp.underline
+        ? activeColorProp
+        : inactiveColorProp;
 });
 
 //Changing fontsize anf fontfamily
 
 fontSize.addEventListener("change", (e) => {
-  let address = addressBar.value;
-  let [cell, cellProp] = activecell(address);
+    let address = addressBar.value;
+    let [cell, cellProp] = activecell(address);
 
-  cellProp.fontSize = fontSize.value; //data change
-  cell.style.fontSize = cellProp.fontSize + "px";
-  fontSize.value = cellProp.fontSize;
+    cellProp.fontSize = fontSize.value; //data change
+    cell.style.fontSize = cellProp.fontSize + "px";
+    fontSize.value = cellProp.fontSize;
 });
 
 fontFamily.addEventListener("change", (e) => {
-  let address = addressBar.value;
-  let [cell, cellProp] = activecell(address);
+    let address = addressBar.value;
+    let [cell, cellProp] = activecell(address);
 
-  cellProp.fontFamily = fontFamily.value; // data change
-  cell.style.fontFamily = cellProp.fontFamily;
-  fontFamily.value = cellProp.fontFamily;
+    cellProp.fontFamily = fontFamily.value; // data change
+    cell.style.fontFamily = cellProp.fontFamily;
+    fontFamily.value = cellProp.fontFamily;
 });
 
 //fontcolor and backround color
 fontColor.addEventListener("change", (e) => {
-  let address = addressBar.value;
-  let [cell, cellProp] = activecell(address);
+    let address = addressBar.value;
+    let [cell, cellProp] = activecell(address);
 
-  cellProp.fontColor = fontColor.value; // data change
-  cell.style.color = cellProp.fontColor;
-  fontColor.value = cellProp.fontColor;
+    cellProp.fontColor = fontColor.value; // data change
+    cell.style.color = cellProp.fontColor;
+    fontColor.value = cellProp.fontColor;
 });
 BGColor.addEventListener("change", (e) => {
-  let address = addressBar.value;
-  let [cell, cellProp] = activecell(address);
+    let address = addressBar.value;
+    let [cell, cellProp] = activecell(address);
 
-  cellProp.BGColor = BGColor.value; // data change
-  cell.style.backgroundColor = cellProp.BGColor;
-  BGColor.value = cellProp.BGColor;
+    cellProp.BGColor = BGColor.value; // data change
+    cell.style.backgroundColor = cellProp.BGColor;
+    BGColor.value = cellProp.BGColor;
 });
 
 //Alignment of font
 
 alignment.forEach((alignElem) => {
-  alignElem.addEventListener("click", (e) => {
-    let address = addressBar.value;
-    let [cell, cellProp] = activecell(address);
+    alignElem.addEventListener("click", (e) => {
+        let address = addressBar.value;
+        let [cell, cellProp] = activecell(address);
 
-    let alignValue = e.target.classList[0];
-    cellProp.alignment = alignValue;
-    cell.style.textAlign = cellProp.alignment;
+        let alignValue = e.target.classList[0];
+        cellProp.alignment = alignValue;
+        cell.style.textAlign = cellProp.alignment;
 
-    switch(alignValue) {
-      case "left":
-        leftAlign.style.backgroundColor = activeColorProp;
-        centerAlign.style.backgroundColor = inactiveColorProp;
-        rightAlign.style.backgroundColor = inactiveColorProp;
-        break;
-      case "center":
-        leftAlign.style.backgroundColor = inactiveColorProp;
-        centerAlign.style.backgroundColor = activeColorProp;
-        rightAlign.style.backgroundColor = inactiveColorProp;
-        break;
-      case "right":
-        leftAlign.style.backgroundColor = inactiveColorProp;
-        centerAlign.style.backgroundColor = inactiveColorProp;
-        rightAlign.style.backgroundColor = activeColorProp;
-        break;
-    }
-  })
-})
+        switch (alignValue) {
+            case "left":
+                leftAlign.style.backgroundColor = activeColorProp;
+                centerAlign.style.backgroundColor = inactiveColorProp;
+                rightAlign.style.backgroundColor = inactiveColorProp;
+                break;
+            case "center":
+                leftAlign.style.backgroundColor = inactiveColorProp;
+                centerAlign.style.backgroundColor = activeColorProp;
+                rightAlign.style.backgroundColor = inactiveColorProp;
+                break;
+            case "right":
+                leftAlign.style.backgroundColor = inactiveColorProp;
+                centerAlign.style.backgroundColor = inactiveColorProp;
+                rightAlign.style.backgroundColor = activeColorProp;
+                break;
+        }
+    });
+});
 
 // Encoding and Decoding cell adress
 function activecell(address) {
-  let [rid, cid] = decodeRIDCIDFromAddress(address); // Array Destructing
-  //Access cell & storage object
-  let cell = document.querySelector(`.cell[rid="${rid}"][cid="${cid}"]`); //Attribute Selector
-  let cellProp = sheetDB[rid][cid];
-  return [cell, cellProp];
+    let [rid, cid] = decodeRIDCIDFromAddress(address); // Array Destructing
+    //Access cell & storage object
+    let cell = document.querySelector(`.cell[rid="${rid}"][cid="${cid}"]`); //Attribute Selector
+    let cellProp = sheetDB[rid][cid];
+    return [cell, cellProp];
 }
 
 function decodeRIDCIDFromAddress(address) {
-  //address -> "A1"
-  let rid = Number(address.slice(1) - 1); //indexing start form 0
-  let cid = Number(address.charCodeAt(0)) - 65; // for encode in alpha we add 65 noe to decode again we r subtrcting 65
-  return [rid, cid];
+    //address -> "A1"
+    let rid = Number(address.slice(1) - 1); //indexing start form 0
+    let cid = Number(address.charCodeAt(0)) - 65; // for encode in alpha we add 65 noe to decode again we r subtrcting 65
+    return [rid, cid];
 }
