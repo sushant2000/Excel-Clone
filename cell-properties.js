@@ -112,6 +112,11 @@ BGColor.addEventListener("change" ,  (e) => {
     BGColor.value = cellProp.BGColor;
 })
 
+//Alignment of font
+
+
+
+
  // Encoding and Decoding cell adress 
  function activecell(address){
      let [rid , cid] = decodeRIDCIDFromAddress(address); // Array Destructing
