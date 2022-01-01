@@ -40,14 +40,14 @@ for(let i = 0; i < rows; i++){
  //Attach Property Listeners
  bold.addEventListener("click" , (e) => {
      let address = addressBar.value;
-     activecell(address);
+    let [cell , cellProp] = activecell(address);
 
  })
 
  function activecell(address){
-     let [rid , cid] = decodeRIDCIDFromAddress(address);
+     let [rid , cid] = decodeRIDCIDFromAddress(address); // Array Destructing
      //Access cell & storage object
-     let cell = document.querySelector(`.cell[rid="${rid}"][cid="${cid}"]`);
+     let cell = document.querySelector(`.cell[rid="${rid}"][cid="${cid}"]`); //Attribute Selector
      let cellProp = sheetDB[rid][cid];
      return [cell , cellProp];
  }
