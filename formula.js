@@ -31,7 +31,7 @@ function evaluateFormula(formula) {
         }
     }
     let decodedFormula = encodedFormula.join(" ");
-  return eval(decodedFormula);
+   return eval(decodedFormula);
 }
 
 function setCellUIAndCellProp(evaluatedValue, formula) {
