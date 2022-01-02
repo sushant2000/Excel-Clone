@@ -26,12 +26,26 @@ formulaBar.addEventListener("keydown", (e) => {
 
 
     //to update UI and cellProp in DB
-    setCellUIAndCellProp(evaluatedValue, inputFormula);
+    setCellUIAndCellProp(evaluatedValue, inputFormula , address);
     addChildToParent(inputFormula);
     //console.log(sheetDB);
   }
 })
+ // Recusiveky we are changing the new formula system on each children
+function updateChildrenCells(parentAddress){
+    let [parentCell , ParentCellProp] = getCellAndCellProp(parentAddress);
+    let children = ParentCellProp.cjildren;
+ // Recusive Function
+    for(let i = 0; i < children.length; i++){
+        let childAddress = children[i];
+        let [childCell , childCellProp] = getCellAndCellProp(childAddress);
+        let childFormula = childCellProp.formula;
 
+        let evaluatedValue = evaluateFormula(childFormula);
+        setCellUIAndCellProp(evaluateValue , childFormula , childAddress);
+        updateChildrenCells(childAddress);
+    }
+}
 //Adding children to array
 function addChildToParent(formula) {
     let childAddress = addressBar.value;
@@ -72,8 +86,7 @@ function evaluateFormula(formula) {
    return eval(decodedFormula);
 }
 
-function setCellUIAndCellProp(evaluatedValue, formula) {
-  let address = addressBar.value;
+function setCellUIAndCellProp(evaluatedValue, formula , address) {
   let [cell, cellProp] = getCellAndCellProp(address);
   //UI Update
   cell.innerText = evaluatedValue;
