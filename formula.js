@@ -30,6 +30,8 @@ formulaBar.addEventListener("keydown", (e) => {
     let evaluateValue = evaluateFormula(inputFormula);
 
 
+
+
     //to update UI and cellProp in DB
     setCellUIAndCellProp(evaluateValue, inputFormula , address);
     addChildToParent(inputFormula);
@@ -39,6 +41,11 @@ formulaBar.addEventListener("keydown", (e) => {
     updateChildrenCells(address);
   }
 })
+
+
+function addChildToGraphComponent(formula , childAddress , ){
+  
+}
  // Recusiveky we are changing the new formula system on each children
 function updateChildrenCells(parentAddress){
     let [parentCell , ParentCellProp] = getCellAndCellProp(parentAddress);
