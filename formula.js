@@ -28,7 +28,7 @@ formulaBar.addEventListener("keydown", (e) => {
     //to update UI and cellProp in DB
     setCellUIAndCellProp(evaluatedValue, inputFormula , address);
     addChildToParent(inputFormula);
-    //console.log(sheetDB);
+    console.log(sheetDB);
   }
 })
  // Recusiveky we are changing the new formula system on each children
