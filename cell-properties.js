@@ -144,6 +144,8 @@ alignment.forEach((alignElem) => {
                 rightAlign.style.backgroundColor = activeColorProp;
                 break;
         }
+
+        
     });
 });
 
@@ -196,6 +198,9 @@ function addListenerToAttachCellProperties(cell) {
                 rightAlign.style.backgroundColor = activeColorProp;
                 break;
         }
+        let formulaBar = document.querySelector(".formula-bar");
+        formulaBar.value = cellProp.formula;
+        cell.value = cellProp.value;
     });
 }
 

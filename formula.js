@@ -6,8 +6,13 @@ for (let i = 0; i < rows; i++) {
       let address = addressBar.value;
       let [activecell, cellProp] = getCellAndCellProp(address); // called func of cell-prop.js
       let enteredData = activecell.innerText;
-
+      
+      if(enteredData === cellProp.value) return;
       cellProp.value = enteredData;
+     // if data modifies removee p-c relation and formula empty and update children with new modified value
+     removeChildFromParent(cellProp.formula);
+     cellProp.formula = "";
+      updateChildrenCells(address);
     });
   }
 }
@@ -22,19 +27,22 @@ formulaBar.addEventListener("keydown", (e) => {
     let[cell, cellProp] = getCellAndCellProp(address);
     if(inputFormula !== cellProp.formula) removeChildFromParent(cellProp.formula);
 
-    let evaluatedValue = evaluateFormula(inputFormula);
+    let evaluateValue = evaluateFormula(inputFormula);
 
 
     //to update UI and cellProp in DB
-    setCellUIAndCellProp(evaluatedValue, inputFormula , address);
+    setCellUIAndCellProp(evaluateValue, inputFormula , address);
     addChildToParent(inputFormula);
     console.log(sheetDB);
+
+
+    updateChildrenCells(address);
   }
 })
  // Recusiveky we are changing the new formula system on each children
 function updateChildrenCells(parentAddress){
     let [parentCell , ParentCellProp] = getCellAndCellProp(parentAddress);
-    let children = ParentCellProp.cjildren;
+    let children = ParentCellProp.children;
  // Recusive Function
     for(let i = 0; i < children.length; i++){
         let childAddress = children[i];
@@ -42,7 +50,7 @@ function updateChildrenCells(parentAddress){
         let childFormula = childCellProp.formula;
 
         let evaluatedValue = evaluateFormula(childFormula);
-        setCellUIAndCellProp(evaluateValue , childFormula , childAddress);
+        setCellUIAndCellProp(evaluatedValue , childFormula , childAddress);
         updateChildrenCells(childAddress);
     }
 }
