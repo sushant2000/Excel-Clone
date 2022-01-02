@@ -24,7 +24,7 @@ formulaBar.addEventListener("keydown", (e) => {
   }
 })
 
-
+//Adding children to array
 function addChildToParent(formula) {
     let childAddress = addressBar.value;
     let encodedFormula = formula.split(" ");
@@ -38,7 +38,7 @@ function addChildToParent(formula) {
 }
 
 function removeChildFromParent(formula){
-    
+
 }
 
 function evaluateFormula(formula) {
