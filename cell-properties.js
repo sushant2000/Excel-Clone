@@ -11,9 +11,9 @@ for (let i = 0; i < rows; i++) {
             underline: false,
             alignment: "left",
             fontFamily: "monospace",
-            fontSize: "15",
+            fontSize: "14",
             fontColor: "#000000",
-            BGColor: "#000000",
+            BGColor:   "#000000"
         };
         sheetRow.push(cellProp);
     }
@@ -156,7 +156,7 @@ function addListenerToAttachCellProperties(cell) {
 
         let address = addressBar.value;
         let[rid , cid] = decodeRIDCIDFromAddress(address);
-        let cellProp = sheetDB[rid , cid];
+        let cellProp = sheetDB[rid][cid];
         //Apply cell properties
 
         cell.style.fontWeight = cellProp.bold ? "bold" : "normal";
@@ -165,21 +165,17 @@ function addListenerToAttachCellProperties(cell) {
         cell.style.fontSize = cellProp.fontSize + "px";
         cell.style.fontFamily = cellProp.fontFamily;
         cell.style.color = cellProp.fontColor;
-        cell.style.backgroundColor = cellProp.BGColor;
+        cell.style.backgroundColor = cellProp.BGColor === "#000000" ? "transparent" : cellProp.BGColor;
         cell.style.textAlign = cellProp.alignment;
 
         //Apply  UI properties to  Container
-        bold.style.backgroundColor = cellProp.bold
-        ? activeColorProp
-        : inactiveColorProp;
-        italic.style.backgroundColor = cellProp.italic
-        ? activeColorProp
-        : inactiveColorProp;
-        underline.style.backgroundColor = cellProp.underline
-        ? activeColorProp
-        : inactiveColorProp;
+        bold.style.backgroundColor = cellProp.bold    ? activeColorProp    : inactiveColorProp;
+        italic.style.backgroundColor = cellProp.italic    ? activeColorProp    : inactiveColorProp;
+        underline.style.backgroundColor = cellProp.underline    ? activeColorProp    : inactiveColorProp;
         fontColor.value = cellProp.fontColor;
         BGColor.value = cellProp.BGColor;
+        fontSize.value = cellProp.fontSize;
+        fontFamily.value = cellProp.fontFamily;
         switch (cell.Prop.alignment) {
             case "left":
                 leftAlign.style.backgroundColor = activeColorProp;
