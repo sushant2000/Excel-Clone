@@ -9,7 +9,7 @@ for (let i = 0; i < rows; i++) {
             bold: false,
             italic: false,
             underline: false,
-            aligment: "left",
+            alignment: "left",
             fontFamily: "monospace",
             fontSize: "15",
             fontColor: "#000000",
@@ -143,6 +143,62 @@ alignment.forEach((alignElem) => {
         }
     });
 });
+
+//Defult Modification on cell
+
+let allCells = document.querySelectorAll(".cell");
+for (let i = 0; i < allCells.length; i++) {
+    addListenerToAttachCellProperties(allCells[i]);
+}
+
+function addListenerToAttachCellProperties(cell) {
+    cell.addEventListener("click", (e) => {
+
+        let address = addressBar.value;
+        let[rid , cid] = decodeRIDCIDFromAddress(address);
+        let cellProp = sheetDB[rid , cid];
+        //Apply cell properties
+
+        cell.style.fontWeight = cellProp.bold ? "bold" : "normal";
+        cell.style.fontStyle = cellProp.italic ? "italic" : "normal";
+        cell.style.textDecoration = cellProp.underline ? "underline" : "none";
+        cell.style.fontSize = cellProp.fontSize + "px";
+        cell.style.fontFamily = cellProp.fontFamily;
+        cell.style.color = cellProp.fontColor;
+        cell.style.backgroundColor = cellProp.BGColor;
+        cell.style.textAlign = cellProp.alignment;
+
+        //Apply  UI properties to  Container
+        bold.style.backgroundColor = cellProp.bold
+        ? activeColorProp
+        : inactiveColorProp;
+        italic.style.backgroundColor = cellProp.italic
+        ? activeColorProp
+        : inactiveColorProp;
+        underline.style.backgroundColor = cellProp.underline
+        ? activeColorProp
+        : inactiveColorProp;
+        fontColor.value = cellProp.fontColor;
+        BGColor.value = cellProp.BGColor;
+        switch (cell.Prop.alignment) {
+            case "left":
+                leftAlign.style.backgroundColor = activeColorProp;
+                centerAlign.style.backgroundColor = inactiveColorProp;
+                rightAlign.style.backgroundColor = inactiveColorProp;
+                break;
+            case "center":
+                leftAlign.style.backgroundColor = inactiveColorProp;
+                centerAlign.style.backgroundColor = activeColorProp;
+                rightAlign.style.backgroundColor = inactiveColorProp;
+                break;
+            case "right":
+                leftAlign.style.backgroundColor = inactiveColorProp;
+                centerAlign.style.backgroundColor = inactiveColorProp;
+                rightAlign.style.backgroundColor = activeColorProp;
+                break;
+        }
+    });
+}
 
 // Encoding and Decoding cell adress
 function activecell(address) {
