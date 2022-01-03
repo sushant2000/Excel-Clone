@@ -24,10 +24,13 @@ function handleSheetDB(sheetIdx){
 
 function handleSheetProperties(){
     for(let i = 0; i < rows; i++){
-        for(let j = 0;  j < col; j++)
+        for(let j = 0;  j < col; j++){
         let cell = document.querySelector(`.cell[rid="${i}"][cid="${j}"]`); //each cell select
         cell.click();
+        }
     }
+    let firstcell = document.querySelector(".cell");
+    firstcell.click();
 }
 
 function handleSheetActiveness(sheet){
