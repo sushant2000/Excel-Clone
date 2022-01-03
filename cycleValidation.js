@@ -23,6 +23,8 @@ function isGraphCyclic(graphComponentMatrix) {
             visitedRow.push(false);
             dfsVisitedRow.push(false);
         }
+        visited.push(visitedRow);
+        dfsVisited.push(dfsVisitedRow);
     }
 
     for (let i = 0; i < rows; i++) {
