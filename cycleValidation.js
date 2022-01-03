@@ -29,12 +29,14 @@ function isGraphCyclic(graphComponentMatrix) {
 
     for (let i = 0; i < rows; i++) {
         for (let j = 0; j < col; j++) {
-        let response  =    dfsCycleDetection(graphComponentMatrix , i , j, visited , dfsVisited);
-            //graphcompentmatrix tell us the relation
-            // i & j are starting point
-            // visited will tell us kitne elements par visit kar chuke hai
-            // dfsvisited will help us to trace our stack movement
-            if(response == true) return true;
+            if(visited[i][j] == false){
+                let response  =    dfsCycleDetection(graphComponentMatrix , i , j, visited , dfsVisited);
+                //graphcompentmatrix tell us the relation
+                // i & j are starting point
+                // visited will tell us kitne elements par visit kar chuke hai
+                // dfsvisited will help us to trace our stack movement
+                if(response == true) return true;
+            }
         }
     }
     return false;
@@ -51,11 +53,11 @@ function dfsCycleDetection( graphcompentmatrix , srcr,srcc, visited , dfsVisited
  // A1 ---> [[0 ,1] , [1,0] , [5 ,10] ......]
  for(let children = 0; children < graphComponentMatrix[srcr][srcc].length; children){
      let[nbrr , nbrc] = graphComponentMatrix[srcr][srcc][children];
-     if(visited[nbrr][nbrc] = false){
-         let response = dfsCycleDetection(graphComponentMatrix, nbrr.nbrc,visited,dfsVisited)
-         if(response == true) return true; // Found cycle so return , no need to visit further paths
+     if(visited[nbrr][nbrc] === false){
+         let response = dfsCycleDetection(graphComponentMatrix, nbrr,nbrc,visited,dfsVisited)
+         if(response === true) return true; // Found cycle so return , no need to visit further paths
      }
-     else if (visited[nbrr][nbrc] == true && dfsVisited[nbrr][nbrc] == true){
+     else if (visited[nbrr][nbrc] === true && dfsVisited[nbrr][nbrc] === true){
          //Found Cylce so return , no need to visit further paths
          return true;
      }
