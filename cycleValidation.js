@@ -1,5 +1,6 @@
 //Storage -> 2D Array (Basic ) overall it is represent as 3D Matrix
-let graphComponentMatrix = [];
+let collectedGraphComponent = [];
+/**let graphComponentMatrix = [];
 
 for (let i = 0; i < rows; i++) {
     let row = [];
@@ -8,7 +9,7 @@ for (let i = 0; i < rows; i++) {
         row.push([]); // for entering child details
     }
     graphComponentMatrix.push(row);
-}
+}**/
 
 //Boolena func true denote cycle vise versa not cycle
 function isGraphCyclic(graphComponentMatrix) {

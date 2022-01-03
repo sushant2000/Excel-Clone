@@ -1,6 +1,6 @@
 //Storage
-
-let sheetDB = []; // largest array contains all subarray
+let collectedSheetDB = []; // contains all sheet db
+/**let sheetDB = []; // largest array contains all subarray
 
 for (let i = 0; i < rows; i++) {
     let sheetRow = [];
@@ -21,7 +21,7 @@ for (let i = 0; i < rows; i++) {
         sheetRow.push(cellProp);
     }
     sheetDB.push(sheetRow);
-}
+}**/
 
 // Selectors for cell properties
 let bold = document.querySelector(".bold");
