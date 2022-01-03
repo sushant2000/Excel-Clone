@@ -29,7 +29,7 @@ function isGraphCyclic(graphComponentMatrix) {
 
     for (let i = 0; i < rows; i++) {
         for (let j = 0; j < col; j++) {
-        let reponse  =    dfsCycleDetection(graphComponentMatrix , i , j, visited , dfsVisited);
+        let response  =    dfsCycleDetection(graphComponentMatrix , i , j, visited , dfsVisited);
             //graphcompentmatrix tell us the relation
             // i & j are starting point
             // visited will tell us kitne elements par visit kar chuke hai
