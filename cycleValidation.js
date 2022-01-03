@@ -9,4 +9,9 @@ for(let i = 0; i< rows; i++){
     }
     graphComponentMatrix.push(row);
 }
+ 
 
+//Boolena func true denote cycle vise versa not cycle
+function isGraphCyclic(){
+
+}
