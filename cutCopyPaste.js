@@ -67,5 +67,36 @@ copyBtn.addEventListener("click" , (e) =>{
 })
 
 pasteBtn.addEventListener("click", (e) =>{
-    
+    //Paste cell Data 
+
+    if()
+    let rowDiff = Math.abs(rangeStorage[0][0] - rangeStorage[1][0]);
+    let colDiff = Math.abs(rangeStorage[0][1] - rangeStorage[1][1]);
+
+    //Finding our Target Address and decode 
+    let address = addressbar.value;
+    let [stRow, stCol] = decodeRIDCIDFromAddress(address);
+
+    for(let i = stRow ,r=0; i <=stRow+rowDiff; i++,r++){ // r & c used in copy matrix
+        for(let j = stCol,c=0; j <= stCol + colDiff; j++,c++){
+        let cell = document.querySelector(`.cell[rid="${i}"][cid="${j}"]`); 
+           if(!cell) return;
+           //DB change
+           let cellProp = sheetDB[i][j];
+           let data = copyData[r][c];
+           cellProp.bold = data.bold;
+           cellProp.italic = data.italic;
+           cellProp.underline = data.underline;
+           cellProp.fontSize = data.fontSize;
+           cellProp.fontFamily = data.fontFamily;
+           cellProp.fontColor = data.fontColor;
+           cellProp.BGColor = data.BGColor;
+           cellProp.alignment = data.alignment;
+
+           //UI change
+           cell.click();
+
+        }
+    }
+
 })
