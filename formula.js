@@ -33,8 +33,15 @@ formulaBar.addEventListener("keydown", (e) => {
     //add children first to check formula is cyclic or not only then evaluate
     // true denote cycle vise versa not cycle
     let isCyclic = isGraphCyclic(graphComponentMatrix);
-    if (isCyclic === true) {
-      alert("Your Formula Is Cyclic");
+    if (isCyclic) {
+      //alert("Your Formula Is Cyclic");
+      let response = confirm("Your Formula Is Cyclic. Do you want to trace your path?");
+      while(response === true){
+        //keep on tracking the color until user deny
+
+        isGraphCyclicTracePath(graphComponentMatrix);
+        response = confirm("Your Formula Is Cyclic. Do you want to trace your path?");
+      }
       removeChildFromGraphComponent(inputFormula, address);
       return;
     }

@@ -1,7 +1,7 @@
 /**CYCLE DETECTION ALGO PART STARTS */
 
 //Boolena func true denote cycle vise versa not cycle
-function isGraphCyclic(graphComponentMatrix) {
+function isGraphCyclicTracePath(graphComponentMatrix) {
     // Dependency visited , dfsvisited (2D array)
     let visited = [];
     let dfsVisited = [];
@@ -17,7 +17,7 @@ function isGraphCyclic(graphComponentMatrix) {
         dfsVisited.push(dfsVisitedRow);
     }
 
-    for (let i = 0; i < rows; i++) {
+    /**for (let i = 0; i < rows; i++) {
         for (let j = 0; j < col; j++) {
             if(visited[i][j] == false){
                 let response  = dfsCycleDetection(graphComponentMatrix , i , j, visited , dfsVisited);
@@ -28,16 +28,12 @@ function isGraphCyclic(graphComponentMatrix) {
                 if(response == true) return true;
             }
         }
-    }
+    }**/
+    
     return false;
 }
 
-//Start -> visited(true) dfsvist(true)
-//end vapas jaate hue dfsvis(false)
-//if vis[i][j] == true already visited go back  no explore
-//cycle detection condition ---> if(vis[i][j] == true && dfsvis[i][j]== true)  --> cycle
-// Return  ---> True(cyclic then return) or False(keep moving in graph)
-function dfsCycleDetection( graphComponentMatrix , srcr,srcc, visited , dfsVisited) { 
+function dfsCycleDetectionTracePath( graphComponentMatrix , srcr,srcc, visited , dfsVisited) { 
  visited[srcr][srcc] = true;
  dfsVisited[srcr][srcc] = true;
  // A1 ---> [[0 ,1] , [1,0] , [5 ,10] ......]

@@ -35,11 +35,11 @@ function isGraphCyclic(graphComponentMatrix) {
                 // i & j are starting point
                 // visited will tell us kitne elements par visit kar chuke hai
                 // dfsvisited will help us to trace our stack movement
-                if(response == true) return true;
+                if(response == true) return [i , j];
             }
         }
     }
-    return false;
+    return null;
 }
 
 //Start -> visited(true) dfsvist(true)
