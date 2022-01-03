@@ -40,6 +40,7 @@ function isGraphCyclic(graphComponentMatrix) {
 //end vapas jaate hue dfsvis(false)
 //if vis[i][j] == true already visited go back  no explore
 //cycle detection condition ---> if(vis[i][j] == true && dfsvis[i][j]== true)  --> cycle
+// Return  ---> True(cyclic then return) or False(keep moving in graph)
 function dfsCycleDetection( graphcompentmatrix , srcr,srcc, visited , dfsVisited) { 
  visited[srcr][srcc] = true;
  dfsVisited[srcr][srcc] = true;
