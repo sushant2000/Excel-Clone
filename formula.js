@@ -51,7 +51,7 @@ formulaBar.addEventListener("keydown", async (e) => {
     //to update UI and cellProp in DB
     setCellUIAndCellProp(evaluateValue, inputFormula, address);
     addChildToParent(inputFormula);
-    console.log(sheetDB);
+  //  console.log(sheetDB);
 
     updateChildrenCells(address);
   }
