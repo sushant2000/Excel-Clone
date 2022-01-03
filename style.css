@@ -22,8 +22,17 @@ body {
   padding-left: 1rem;
 }
 .page-action {
-  margin: 0.5rem;
+  width: 3.5rem;
+  height: 2rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: #f1f2f6;
+}
+.selected-page-action{
+  background-color: #f1f2f6;
+  color: #107c41;
 }
 .cellprop-actions-cont {
   height: 3rem;
