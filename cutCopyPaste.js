@@ -48,7 +48,7 @@ function defaultSelectedCellsUI(){
 
 }
 
-
+//copy the data pushing it in copyData array
 let copyData = [];
 copyBtn.addEventListener("click" , (e) =>{
     let strow = rangeStorage[0][0];
@@ -63,4 +63,9 @@ copyBtn.addEventListener("click" , (e) =>{
         }
         copyData.push(copyRow);
     }
+    defaultSelectedCellsUI();
+})
+
+pasteBtn.addEventListener("click", (e) =>{
+    
 })
