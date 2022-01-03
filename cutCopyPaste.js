@@ -51,6 +51,8 @@ function defaultSelectedCellsUI(){
 //copy the data pushing it in copyData array
 let copyData = [];
 copyBtn.addEventListener("click" , (e) =>{
+    if(rangeStorage.length < 2) return;
+    copyData = [];
     let strow = rangeStorage[0][0];
     let stcol = rangeStorage[0][1];
     let endrow = rangeStorage[1][0];
@@ -66,24 +68,56 @@ copyBtn.addEventListener("click" , (e) =>{
     defaultSelectedCellsUI();
 })
 
+cutBtn.addEventListener("click" ,(e) =>{
+
+    if(rangeStorage.length < 2) return;
+
+    let strow = rangeStorage[0][0];
+    let stcol = rangeStorage[0][1];
+    let endrow = rangeStorage[1][0];
+    let endcol = rangeStorage[1][1];
+    for(let i = strow ; i <= endrow;  i++){
+        for(let j = stcol; j <= endcol;   j++){
+
+            let cell = document.querySelector(`.cell[rid="${i}"][cid="${j}"]`);
+          //DB work
+            let cellProp = sheetDB[i][j];
+            cellProp.value = "";
+            cellProp.bold = false;
+            cellProp.italic = false;
+            cellProp.underline = false;
+            cellProp.fontSize = 14;
+            cellProp.fontFamily = "monospace";
+            cellProp.fontColor = "#000000";
+            cellProp.BGColor = "#000000";
+            cellProp.alignment = "left";
+            
+         //UI
+         cell.click();
+        }
+    }
+    defaultSelectedCellsUI();
+})
+
 pasteBtn.addEventListener("click", (e) =>{
     //Paste cell Data 
 
-    if()
+    if(rangeStorage.length < 2) return;
     let rowDiff = Math.abs(rangeStorage[0][0] - rangeStorage[1][0]);
     let colDiff = Math.abs(rangeStorage[0][1] - rangeStorage[1][1]);
 
     //Finding our Target Address and decode 
-    let address = addressbar.value;
+    let address = addressBar.value;
     let [stRow, stCol] = decodeRIDCIDFromAddress(address);
 
-    for(let i = stRow ,r=0; i <=stRow+rowDiff; i++,r++){ // r & c used in copy matrix
-        for(let j = stCol,c=0; j <= stCol + colDiff; j++,c++){
+    for(let i = stRow ,r = 0; i <=stRow+rowDiff; i++,r++){ // r & c used in copy matrix
+        for(let j = stCol,c = 0; j <= stCol + colDiff; j++,c++){
         let cell = document.querySelector(`.cell[rid="${i}"][cid="${j}"]`); 
-           if(!cell) return;
+           if(!cell) continue;
            //DB change
-           let cellProp = sheetDB[i][j];
            let data = copyData[r][c];
+           let cellProp = sheetDB[i][j];
+           cellProp.value = data.value;
            cellProp.bold = data.bold;
            cellProp.italic = data.italic;
            cellProp.underline = data.underline;
@@ -94,7 +128,7 @@ pasteBtn.addEventListener("click", (e) =>{
            cellProp.alignment = data.alignment;
 
            //UI change
-           cell.click();
+           cell.click(); // cell-property click listerner whenever click on cell it will change/set its property
 
         }
     }
