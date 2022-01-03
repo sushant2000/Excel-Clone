@@ -12,6 +12,7 @@ addSheetBtn.addEventListener("click" , (e) =>{
     sheet.innerHTML = `<div class="sheet-content">Sheet ${allSheetFolders.length + 1}</div>`;
 
     sheetFoldersCont.appendChild(sheet);
+    sheet.scrollIntoView();
     //Storage DB work
     createSheetDB();
     createGraphComponentMatrix();
