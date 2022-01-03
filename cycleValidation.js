@@ -1,7 +1,7 @@
 //Storage -> 2D Array (Basic ) overall it is represent as 3D Matrix
 let collectedGraphComponent = [];
-/**let graphComponentMatrix = [];
-
+let graphComponentMatrix = [];
+/**
 for (let i = 0; i < rows; i++) {
     let row = [];
     for (let j = 0; j < col; j++) {

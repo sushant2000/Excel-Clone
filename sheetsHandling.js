@@ -15,8 +15,29 @@ addSheetBtn.addEventListener("click" , (e) =>{
     //Storage DB work
     createSheetDB();
     createGraphComponentMatrix();
+    handleSheetActiveness(sheet);
 })
+function handleSheetDB(sheetIdx){
+  sheetDB = collectedSheetDB[sheetIdx];
+  graphComponentMatrix =  collectedGraphComponent[sheetIdx];
+}
 
+function handleSheetProperties(){
+    for(let i = 0; i < rows; i++){
+        for(let j = 0;  j < col; j++)
+        let cell = document.querySelector(`.cell[rid="${i}"][cid="${j}"]`); //each cell select
+        cell.click();
+    }
+}
+
+function handleSheetActiveness(sheet){
+    sheet.addEventListener("click" ,(e) => {
+        let sheetIdx = Number(sheet.getAttribute("id"));
+        handleSheetDB(sheetIdx);
+        handleSheetProperties();
+    })
+
+}
 
 function createSheetDB() {
     let sheetDB = []; // largest array contains all subarray

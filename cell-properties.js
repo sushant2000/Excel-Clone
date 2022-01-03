@@ -1,7 +1,12 @@
 //Storage
 let collectedSheetDB = []; // contains all sheet db
-/**let sheetDB = []; // largest array contains all subarray
+let sheetDB = []; // largest array contains all subarray
 
+{
+    let addSheetBtn = document.querySelector(".sheet-add-icon");
+    addSheetBtn.click();
+}
+/**
 for (let i = 0; i < rows; i++) {
     let sheetRow = [];
     for (let j = 0; j < col; j++) {
