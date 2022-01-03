@@ -52,7 +52,7 @@ function dfsCycleDetection( graphComponentMatrix , srcr,srcc, visited , dfsVisit
  dfsVisited[srcr][srcc] = true;
  // A1 ---> [[0 ,1] , [1,0] , [5 ,10] ......]
  for(let children = 0; children < graphComponentMatrix[srcr][srcc].length; children++){
-     let[nbrr , nbrc] = graphComponentMatrix[srcr][srcc][children];
+     let[nbrr , nbrc] = graphComponentMatrix[srcr][srcc][children];    // nbrr neighbour row  nbrc neighbour coloumn
      if(visited[nbrr][nbrc] === false){
          let response = dfsCycleDetection(graphComponentMatrix, nbrr , nbrc, visited, dfsVisited);
          if(response == true) return true; // Found cycle so return , no need to visit further paths

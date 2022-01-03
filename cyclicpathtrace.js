@@ -1,8 +1,20 @@
 /**CYCLE DETECTION ALGO PART STARTS */
 
 //Boolena func true denote cycle vise versa not cycle
-function isGraphCyclicTracePath(graphComponentMatrix) {
-    // Dependency visited , dfsvisited (2D array)
+
+
+function colorPromise() {  // Fuction For delay and async-wait 
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve();
+        }, 1000);
+    });
+}
+
+
+
+async function isGraphCyclicTracePath(graphComponentMatrix, cyclicResponse) {
+    let [srcr, srcc] = cyclicResponse;
     let visited = [];
     let dfsVisited = [];
 
@@ -17,41 +29,72 @@ function isGraphCyclicTracePath(graphComponentMatrix) {
         dfsVisited.push(dfsVisitedRow);
     }
 
-    /**for (let i = 0; i < rows; i++) {
-        for (let j = 0; j < col; j++) {
-            if(visited[i][j] == false){
-                let response  = dfsCycleDetection(graphComponentMatrix , i , j, visited , dfsVisited);
-                //graphcompentmatrix tell us the relation
-                // i & j are starting point
-                // visited will tell us kitne elements par visit kar chuke hai
-                // dfsvisited will help us to trace our stack movement
-                if(response == true) return true;
+    let response = await dfsCycleDetection(
+        graphComponentMatrix,
+        srcr,
+        srcc,
+        visited,
+        dfsVisited
+    );
+    if (response === true) return Promise.resolve(true);
+
+    return Promise.resolve(false);
+}
+
+
+//Coloring cells for tracking
+async function dfsCycleDetectionTracePath(
+    graphComponentMatrix,
+    srcr,
+    srcc,
+    visited,
+    dfsVisited
+) {
+    visited[srcr][srcc] = true;
+    dfsVisited[srcr][srcc] = true;
+
+    let cell = document.querySelector(`.cell[rid="${srcr}"][cid="${srcc}"]`);
+    cell.style.backgroungColor = "lightblue";
+    await colorPromise(); // stop function here to resolve the promise 1 sec finish then further move
+
+    for (
+        let children = 0;
+        children < graphComponentMatrix[srcr][srcc].length;
+        children++
+    ) {
+        let [nbrr, nbrc] = graphComponentMatrix[srcr][srcc][children];
+        if (visited[nbrr][nbrc] === false) {
+            // nbrr neighbour row  nbrc neighbour coloumn
+    let response = await dfsCycleDetection( graphComponentMatrix,
+                nbrr,
+                nbrc,
+                visited,
+                dfsVisited
+            );
+            if (response == true) {
+                cell.style.backgroungColor = "transparent";
+                await colorPromise();
+                return Promise.resolve(true);
             }
+        } else if (
+            visited[nbrr][nbrc] === true &&
+            dfsVisited[nbrr][nbrc] === true
+        ) {
+            let cyclicCell = document.querySelector(
+                `.cell[rid="${nbrr}"][cid="${nbrc}"]`
+            );
+
+            cyclicCell.style.backgroungColor = "lightsalmon";
+            colorPromise();
+
+            cyclicCell.style.backgroungColor = "transparent";
+            colorPromise();
+            return Promise.resolve(true);
         }
-    }**/
-    
-    return false;
+    }
+
+    dfsVisited[srcr][srcc] = false;
+    return Promise.resolve(false);
 }
 
-function dfsCycleDetectionTracePath( graphComponentMatrix , srcr,srcc, visited , dfsVisited) { 
- visited[srcr][srcc] = true;
- dfsVisited[srcr][srcc] = true;
- // A1 ---> [[0 ,1] , [1,0] , [5 ,10] ......]
- for(let children = 0; children < graphComponentMatrix[srcr][srcc].length; children++){
-     let[nbrr , nbrc] = graphComponentMatrix[srcr][srcc][children];
-     if(visited[nbrr][nbrc] === false){
-         let response = dfsCycleDetection(graphComponentMatrix, nbrr , nbrc, visited, dfsVisited);
-         if(response == true) return true; // Found cycle so return , no need to visit further paths
-     }
-     else if (visited[nbrr][nbrc] === true && dfsVisited[nbrr][nbrc] === true){
-         //Found Cylce so return , no need to visit further paths
-         return true;
-     }
-  }
-
- dfsVisited[srcr][srcc] = false;
- return false;
-}
-
-
-/**CYCLE DETECTION ALGO PART ENDS */
+/**CYCLE DETECTION COLOR TRACING ALGO PART ENDS */

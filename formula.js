@@ -18,7 +18,7 @@ for (let i = 0; i < rows; i++) {
 }
 // For Evaluating normal expression
 let formulaBar = document.querySelector(".formula-bar");
-formulaBar.addEventListener("keydown", (e) => {
+formulaBar.addEventListener("keydown", async (e) => {
   let inputFormula = formulaBar.value;
   if (e.key === "Enter" && inputFormula) {
     //Enter key must be press + formula bar should contain some value too
@@ -32,14 +32,14 @@ formulaBar.addEventListener("keydown", (e) => {
     addChildToGraphComponent(inputFormula, address); //address child add banega
     //add children first to check formula is cyclic or not only then evaluate
     // true denote cycle vise versa not cycle
-    let isCyclic = isGraphCyclic(graphComponentMatrix);
-    if (isCyclic) {
+    let cyclicResponse = isGraphCyclic(graphComponentMatrix);
+    if (cyclicResponse) {
       //alert("Your Formula Is Cyclic");
       let response = confirm("Your Formula Is Cyclic. Do you want to trace your path?");
       while(response === true){
         //keep on tracking the color until user deny
 
-        isGraphCyclicTracePath(graphComponentMatrix);
+    await isGraphCyclicTracePath(graphComponentMatrix , cyclicResponse); // Util Full Iteration Wait here
         response = confirm("Your Formula Is Cyclic. Do you want to trace your path?");
       }
       removeChildFromGraphComponent(inputFormula, address);
