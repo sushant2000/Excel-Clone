@@ -31,6 +31,8 @@ formulaBar.addEventListener("keydown", (e) => {
 
     let evaluateValue = evaluateFormula(inputFormula);
 
+    addChildToGraphComponent(inputFormula , address); //address child add banega
+
     //to update UI and cellProp in DB
     setCellUIAndCellProp(evaluateValue, inputFormula, address);
     addChildToParent(inputFormula);
@@ -49,6 +51,8 @@ function addChildToGraphComponent(formula, childAddress) {
     let asciiValue = encodedFormula[i].charCodeAt(0);
     if (asciiValue >= 65 && asciiValue <= 90) {
       let [prid, pcid] = decodeRIDCIDFromAddress(encodedFormula[i]);
+      // B1 -> A1 + 10; For A1 rid = 0 = i & cid = j = 0;
+      graphComponentMatrix[prid][pcid].push([crid,ccid]); // B1 Par jaake usske child array mein A1 crid ccid add kardi
     }
   }
 }
