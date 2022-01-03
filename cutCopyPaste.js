@@ -49,3 +49,18 @@ function defaultSelectedCellsUI(){
 }
 
 
+let copyData = [];
+copyBtn.addEventListener("click" , (e) =>{
+    let strow = rangeStorage[0][0];
+    let stcol = rangeStorage[0][1];
+    let endrow = rangeStorage[1][0];
+    let endcol = rangeStorage[1][1];
+    for(let i = strow ; i <= endrow;  i++){
+        let copyRow = [];
+        for(let j = stcol; j <= endcol;   j++){
+            let cellProp = sheetDB[i][j];
+            copyRow.push(cellProp);
+        }
+        copyData.push(copyRow);
+    }
+})
